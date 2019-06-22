@@ -1,5 +1,5 @@
-const express = require('express');
-const multer = require('multer');
+const express      = require('express');
+const multer       = require('multer');
 const ulpoadConfig = require('./config/upload');
 
 const PostController = require('./controllers/PostController');
@@ -11,6 +11,6 @@ const upload = multer(ulpoadConfig);
 routes.get('/posts', PostController.index);
 routes.post('/posts', upload.single('image'), PostController.store);
 
-routes.post('/posts/:id/like ', LikeController.store);
+routes.post('/posts/:id/like', LikeController.store);
 
 module.exports = routes;

@@ -11,7 +11,7 @@ module.exports = {
     },
 
     async store(req, res) {
-        const { author, place, description, hashtag } = req.body;
+        const { author, place, description, hashtags } = req.body;
         const { filename: image } = req.file;
 
         const [name]   = image.split('.');
@@ -21,8 +21,8 @@ module.exports = {
             .resize(500)
             .jpeg({ quality: 70 })
             .toFile(
-                path.resolve(req.file.destination, 'resized', fileName)
-            );
+                path.resolve(req.file.destination, 'resized', image)
+            )
 
         fs.unlinkSync(req.file.path);
 
@@ -30,8 +30,8 @@ module.exports = {
             author,
             place,
             description,
-            hashtag,
-            fileName,
+            hashtags,
+            image,
         });
 
         req.io.emit('post', post);

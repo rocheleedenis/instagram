@@ -26,14 +26,14 @@ class Feed extends Component {
                     <article key={post._id}>
                         <header>
                             <div className="user-info">
-                                <span>{ post.author }</span>
-                                <span className="place">{ post.place }</span>
+                                <span>{post.author}</span>
+                                <span className="place">{post.place}</span>
                             </div>
 
                             <img src={more} alt="Mais" />
                         </header>
 
-                        <img src={`http://localhost:3333/files/${post.image}`} />
+                        <img src={`http://localhost:3333/files/${post.image}`} alt=""/>
 
                         <footer>
                             <div className="actions">
